@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Gestion des utilisateurs</h1>
+    <hr>
+    <div class="page"></div>
+  </div>
+</body>
+<script type="text/template" id="user-list-template">
+<table class="table striped">
+    <thead>
+        <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Age</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% _.each(users, function(user) {%>
+            <tr>
+                <td><%= user.get('prenom') %></td>
+                <td><%= user.get('nom') %></td>
+                <td><%= user.get('age') %></td>
+                <td></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+
+<script>
+
+var User = Backbone.Model.extend({
+  url: function() {
+    if (this.isNew()) {
+      return "./users.php";
+    } else {
+      return "./users.php?id=" + this.id;
+    }
+  }
+});
+
+var UserCollection = Backbone.Collection.extend({
+  url:"users.php",
+});
+
+
+var UserListView = Backbone.View.extend({
+  el: ".page",
+
+  initialize: function() {
+    this.users = new UserCollection();
+  },
+
+  render: function() {
+    var that = this;
+    this.users.fetch({
+      success: function(users){
+        // On affiche les utilisateurs. 
+          var template = _.template($('#user-list-template').html(), {users: users.models});
+          that.$el.html(template);
+      }
+    });
+  }
+});
+
+
+var Router = Backbone.Router.extend({
+  routes: {
+    '': 'home',
+  }
+});
+
+// Instanciation des vues
+var userListView = new UserListView();
+
+
+// Instanciation de mon router
+var router = new Router();
+router.on('route:home', function() {
+  userListView.render();
+});
+
+
+
+Backbone.history.start();
+
+</script>
+</html>
