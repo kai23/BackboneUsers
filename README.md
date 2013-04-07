@@ -9,25 +9,26 @@ Le but est de créer une application basique qui permettra de gérer les utilisa
 ### 1)  La base de données
 
 Nous allons donc, pour commencer, avoir besoin… d’une base de données. Voici son schéma :
-
-    SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-    SET time_zone = "+00:00";
-     
-    /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-    /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-    /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-    /*!40101 SET NAMES utf8 */;
-     
-    CREATE DATABASE `TestBackbone` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-    USE `TestBackbone`;
-     
-    CREATE TABLE IF NOT EXISTS `users` (
-      `id` int(11) NOT NULL AUTO_INCREMENT,
-      `prenom` varchar(25) NOT NULL,
-      `nom` varchar(25) NOT NULL,
-      `age` int(11) NOT NULL,
-      PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+```sql
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+ 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+ 
+CREATE DATABASE `TestBackbone` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `TestBackbone`;
+ 
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `prenom` varchar(25) NOT NULL,
+  `nom` varchar(25) NOT NULL,
+  `age` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+```
 
 Ceci va nous créer une base de données « BackboneUsers » avec une table « users », qui possède quatre champs :
 
