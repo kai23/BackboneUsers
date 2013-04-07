@@ -66,67 +66,72 @@ Sachant que BackboneJS, à l’aide de <code>Backbone.sync()</code>, gère quasi
 
 ### 1) Structure de notre document HTML
     
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="utf-8" />
-        <title></title>
-    	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.css" />
-    </head>
-    <body>
-    
-    </body>
-    
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-    </html>
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+    <title></title>
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.css" />
+</head>
+<body>
+
+</body>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+</html>
+```
 
 C’est juste une page classique, à laquelle on rajoute Bootstrap et JQuery. Pour info, sachez que j’ai fait de cette page « de start » un snippet pour Sublime Text 2, que vous trouverez ici : https://github.com/kai23/sublime-snippets/blob/master/html5.sublime-snippet
 À cette page, nous allons ajouter UnderscoreJS et BackboneJS.
 
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="utf-8" />
-    	<title></title>
-    	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.css" />
-    </head>
-    <body>
-    	
-    </body>
-    
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
-    </html>
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+	<title></title>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.css" />
+</head>
+<body>
+	
+</body>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+</html>
+```
 
 Jusque ici, j’espère que vous arrivez à suivre sans soucis :) Le fait d’utiliser le CDN de CDNJS facilite un peu la tâche.
 Faites bien attention de bien inclure BackboneJS APRÈS UnderscoreJS, En effet, Underscore est une dépendance de Backbone.
 Dans le body, nous allons ajouter ceci :
 
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="utf-8" />
-    	<title></title>
-    	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.css" />
-    </head>
-    <body>
-    	<div class="container">
-    		<h1>Gestion des utilisateurs</h1>
-    		<hr>
-    		<div class="page"></div>
-    	</div>
-    </body>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
-    
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+	<title></title>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.css" />
+</head>
+<body>
+	<div class="container">
+		<h1>Gestion des utilisateurs</h1>
+		<hr>
+		<div class="page"></div>
+	</div>
+</body>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+```    
     
 ### 2) Première route de BackboneJS
 
