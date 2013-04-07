@@ -42,22 +42,23 @@ Quelque chose d’assez simple, donc.
 
 Pour la simplicité du tutoriel, nous allons avoir deux fichiers, tous les deux étant situés à la racine de notre serveur web :
 
-* index.html, qui contiendra l’ensemble de notre code javascript  + html
-* users.php, qui contiendra les différentes requêtes que l’on fera en base
+* <code>index.html</code>, qui contiendra l’ensemble de notre code javascript  + html
+* <code>users.php</code>, qui contiendra les différentes requêtes que l’on fera en base
 
 ### 3) Rappels sur BackboneJS
 
 Comme dit plus haut, BackboneJS est un framework MVC (enfin, plus MV que MVC), en Javascript. Celui-ci est énormément utile pour faire des applications Web de gestion, par exemple. Le principe est que tout soit fait sur une seule et unique page, tout le reste se faisant par des requêtes AJAX.
 Si vous souhaitez un bon starter pour Backbone, et comprendre la notion de route, modèle, vue et collections, je vous conseille d’aller faire un tour sur http://backbonetutorials.com/ , qui propose une excellente introduction à ce framework
-Basiquement, BackboneJS utilise des requêtes HTTP pour faire la liaison avec son serveur. Vous connaissez sûrement POST et GET, dont on se sert assez couramment en PHP, et bien il en existe d’autres (plein !), dont PUT et DELETE. Notre projet va fonctionner de la sorte :
-* Lorsque Backbone fait une requête POST sur users.php, nous allons sauvegarder en base de données les données contenues dans le POST.
-* Lorsque Backbone fait une requête PUT sur users.php, nous mettons à jour l’entrée contenue dans ce PUT
-* Lorsque Backbone fait une requête DELETE sur users.php, Ô étonnement, nous allons supprimer l’entrée passée dans le DELETE
-* Lorsque Backbone fait une requête GET sur users.php, nous avons deux cas de figure :
+Basiquement, BackboneJS utilise des requêtes HTTP pour faire la liaison avec son serveur. Vous connaissez sûrement <code>POST</code> et <code>GET</code>, dont on se sert assez couramment en PHP, et bien il en existe d’autres (plein !), dont <code>PUT</code> et <code>DELETE</code>. Notre projet va fonctionner de la sorte :
+
+* Lorsque Backbone fait une requête <code>POST</code> sur <code>users.php</code>, nous allons sauvegarder en base de données les données contenues dans le POST.
+* Lorsque Backbone fait une requête <code>PUT</code> sur <code>users.php</code>, nous mettons à jour l’entrée contenue dans ce PUT
+* Lorsque Backbone fait une requête <code>DELETE</code> sur <code>users.php</code>, Ô étonnement, nous allons supprimer l’entrée passée dans le DELETE
+* Lorsque Backbone fait une requête <code>GET</code> sur <code>users.php</code>, nous avons deux cas de figure :
   1. Soit le GET ne possède pas de paramètres, auquel cas nous allons chercher toutes nos entrées dans la base
   2. Soit le GET possède un paramètre (id), et nous récupérons uniquement l’utilisateur dont on a besoin
 
-Sachant que BackboneJS, à l’aide de Backbone.sync(), gère quasiment toute la partie client, si vous avez compris ça, vous avez toutes les clefs en main. Allons-y !
+Sachant que BackboneJS, à l’aide de <code>Backbone.sync()</code>, gère quasiment toute la partie client, si vous avez compris ça, vous avez toutes les clefs en main. Allons-y !
 
 
 ## II/ Structure, routes et première vue
@@ -68,7 +69,7 @@ Sachant que BackboneJS, à l’aide de Backbone.sync(), gère quasiment toute la
     <html>
     <head>
       <meta charset="utf-8" />
-    	<title></title>
+        <title></title>
     	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.css" />
     </head>
     <body>
@@ -128,7 +129,7 @@ Dans le body, nous allons ajouter ceci :
     
 ### 2) Première route de BackboneJS
 
-On va donc commencer par écrire la route pour le « home », la page d’accueil. Ouvrez une balise <script> en dessous des autres, et ajoutez ceci
+On va donc commencer par écrire la route pour le « home », la page d’accueil. Ouvrez une balise <code>script</code> en dessous des autres, et ajoutez ceci
 
     var Router = Backbone.Router.extend({
      routes: {
@@ -179,6 +180,7 @@ On va commencer avec quelque chose de très basique :
     Backbone.history.start();
     
 Vous suivez ? Si l’on parcoure ce que notre navigateur fait :
+
 * Il arrive sur le « / »
 * Le routeur lui donne un alias « home »
 * « home » redirige ver « render » de notre vue  « UserListView »
