@@ -137,19 +137,21 @@ Dans le body, nous allons ajouter ceci :
 
 On va donc commencer par écrire la route pour le « home », la page d’accueil. Ouvrez une balise <code>script</code> en dessous des autres, et ajoutez ceci
 
-    var Router = Backbone.Router.extend({
-     routes: {
-     '' : 'home',
-     }
-    });
-     
-    var router = new Router();
-    router.on('route:home', function(){
-     console.log("Je suis dans le home !");
-    });
-     
-    Backbone.history.start();
-        
+```javascript
+var Router = Backbone.Router.extend({
+routes: {
+'' : 'home',
+}
+});
+
+var router = new Router();
+router.on('route:home', function(){
+console.log("Je suis dans le home !");
+});
+
+Backbone.history.start();
+```
+
 Une route très classique donc. Lorsque je serai dans la racine de mon site, je ferai appel à un « alias » home. Puis lorsque mon router tombe sur cet alias, je fais un console.log(« je suis dans le home »). Enfin, je start le gestionnaire d’historique de Backbone.
 Si vous allez dans votre racine du site, vous allez dans la page d’accueil, ouvrez votre console et rafraîchissez. Si vous voyez « Je suis dans le home ! », vous êtes tout bon ! :)
 
@@ -161,30 +163,30 @@ Son instanciation
 Le changement de la route, disant qu’on va faire appel à la méthode render de notre vue fraîchement instanciée
 
 On va commencer avec quelque chose de très basique :
+```javascript
+var UserListView = Backbone.View.extend({
+el:".page",
 
-    var UserListView = Backbone.View.extend({
-     el:".page",
-     
-    render: function() {
-     this.$el.html("Coucou !");
-     }
-    });
-    var Router = Backbone.Router.extend({
-     routes: {
-     '' : 'home',
-     }
-    });
-     
-    // Instanciation des vues
-    var userListView = new UserListView();
-    // Instanciation de mon router
-    var router = new Router();
-    router.on('route:home', function(){
-     userListView.render();
-    });
-     
-    Backbone.history.start();
-    
+render: function() {
+this.$el.html("Coucou !");
+}
+});
+var Router = Backbone.Router.extend({
+routes: {
+'' : 'home',
+}
+});
+
+// Instanciation des vues
+var userListView = new UserListView();
+// Instanciation de mon router
+var router = new Router();
+router.on('route:home', function(){
+userListView.render();
+});
+
+Backbone.history.start();
+```
 Vous suivez ? Si l’on parcoure ce que notre navigateur fait :
 
 * Il arrive sur le « / »
